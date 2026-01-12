@@ -50,8 +50,8 @@ export const AvatarControls: React.FC = () => {
         </ToggleGroupItem>
       </ToggleGroup>
       {isVoiceChatActive || isVoiceChatLoading ? <AudioInput /> : <TextInput />}
-      <div className="absolute top-[-70px] right-3">
-        <Button className="!bg-zinc-700 !text-white" onClick={interrupt}>
+      <div className="absolute top-[-60px] sm:top-[-70px] right-2 sm:right-3">
+        <Button className="!bg-zinc-700 !text-white !text-xs sm:!text-sm" onClick={interrupt}>
           Interrupt
         </Button>
       </div>
