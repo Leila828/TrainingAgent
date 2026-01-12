@@ -16,17 +16,17 @@ import { Field } from "./Field";
 import { AVATARS, STT_LANGUAGE_LIST } from "@/app/lib/constants";
 
 interface AvatarConfigProps {
-  onConfigChange: (config: StartAvatarRequest) => void;
-  config: StartAvatarRequest;
+  onConfigChange: (config: StartAvatarRequest & { systemPrompt?: string }) => void;
+  config: StartAvatarRequest & { systemPrompt?: string };
 }
 
 export const AvatarConfig: React.FC<AvatarConfigProps> = ({
   onConfigChange,
   config,
 }) => {
-  const onChange = <T extends keyof StartAvatarRequest>(
+  const onChange = <T extends keyof (StartAvatarRequest & { systemPrompt?: string })>(
     key: T,
-    value: StartAvatarRequest[T],
+    value: (StartAvatarRequest & { systemPrompt?: string })[T],
   ) => {
     onConfigChange({ ...config, [key]: value });
   };

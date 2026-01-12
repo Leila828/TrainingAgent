@@ -22,10 +22,11 @@ import { MessageHistory } from "./AvatarSession/MessageHistory";
 
 import { AVATARS } from "@/app/lib/constants";
 
-const DEFAULT_CONFIG: StartAvatarRequest = {
+const DEFAULT_CONFIG: StartAvatarRequest & { systemPrompt?: string } = {
   quality: AvatarQuality.Low,
   avatarName: AVATARS[0].avatar_id,
   knowledgeId: undefined,
+  systemPrompt: "You are an expert technical instructor specializing in e-learning for technology topics. Your expertise includes Machine Learning (ML), Cloud Computing, Software Engineering, Data Science, DevOps, and other modern technology fields. You provide clear, practical explanations and help students learn technical concepts effectively. Focus on technical accuracy, practical examples, and hands-on learning approaches.",
   voice: {
     rate: 1.5,
     emotion: VoiceEmotion.EXCITED,
@@ -137,10 +138,16 @@ function InteractiveAvatar() {
             <AvatarControls />
           ) : sessionState === StreamingAvatarSessionState.INACTIVE ? (
             <div className="flex flex-row gap-4">
-              <Button onClick={() => startSessionV2(true)}>
+              <Button 
+                className="!bg-[#1F7A36]"
+                onClick={() => startSessionV2(true)}
+              >
                 Start Voice Chat
               </Button>
-              <Button onClick={() => startSessionV2(false)}>
+              <Button 
+                className="!bg-[#1F7A36]"
+                onClick={() => startSessionV2(false)}
+              >
                 Start Text Chat
               </Button>
             </div>
